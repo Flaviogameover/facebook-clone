@@ -1,38 +1,437 @@
-.App {
-  text-align: center;
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,body{
+    margin: 0;
+    height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+    background-color: #eee;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/*Config*/
+
+.modal{
+    position: fixed;
+    background-color: rgb(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
 }
 
-.App-link {
-  color: #61dafb;
+.modal_close_btn{
+    position: absolute;
+    top: 0;
+    right: -25px;
+    transform: translate(-50%,-50%);
+    background-color: #42b7f5;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 25px;
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal_form{
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.div_btn_submit{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.div_btn_submit input[type="submit"]{
+    background-color: #42b7f5;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+/*Fim Config*/
+
+.header{
+    background-color: #fff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_left{
+    display: flex;
+    flex-direction: row;
+}
+
+.logo_fb svg{
+    color: #42b7f5;
+    font-size: 45px;
+    margin: 0 10px;
+}
+
+.search_fb{
+    background-color: rgb(230,230,230);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.search_fb svg{
+    color: grey;
+    font-size: 13px;
+}
+
+.menu_fb{
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 23px;
+}
+
+.menu_fb svg{
+    vertical-align: middle;
+    color: grey;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.header_right{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 20px;
+}
+
+.plus_icon{
+    background-color: rgb(230,230,230);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    font-size: 28px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.plus_icon svg{
+    font-size: 18px;
+}
+
+.account_modal_form h3{
+    text-align: center;
+}
+
+.account_modal_form form{
+    margin-top: 10px;
+}
+
+.account_modal_form input[type="text"],
+.account_modal_form input[type="email"],
+.account_modal_form input[type="password"]{
+    width: 100%;
+    padding-left: 8px;
+    height: 27px;
+    margin: 5px 0;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* Stories */
+
+.stories{
+    display: flex;
+    margin: 10px 0 10px 10px;
+    position: relative;
+}
+
+.stories_card{
+    width: 19%;
+    margin-right: 1%;
+    padding-top: 25%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    position: relative;
+    z-index: 0;
+}
+
+.user_profile_mini{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.stories_card img{
+    position: absolute;
+    top: 7px;
+    left: 5px;
+    border: 2px dotted #42b7f5;
+}
+
+.stories_card p{
+    font-size: 14px;
+    padding: 10px;
+    color: #fff;
+}
+
+.btn_next{
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/*--------------------User Post-----------------*/
+
+.user_post{
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.photo_modal_form h3{
+    text-align: center;
+}
+
+.photo_modal_form form{
+    margin-top: 10px;
+}
+
+.photo_modal_form input,.photo_modal_form textarea{
+    margin: 8px 0;
+}
+
+.photo_modal_form textarea{
+    width: 100%;
+    height: 120px;
+    resize: none;
+    padding: 8px;
+}
+
+.user_post_form{
+    margin-top: 5px;
+    display: flex;
+}
+
+.user_img_post{
+    width: 5%;
+}
+
+.user_post_input{
+    width: 95%;
+}
+
+.user_post_input input[type="text"]{
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    outline: none;
+    padding-left: 10px;
+    border: 0;
+    background-color: #eee;
+    font-size: 17px;
+    color: #4b4b4b;
+}
+
+.user_post_input input[type="text"]::placeholder{
+    color: #aaa;
+}
+
+.user_post_action{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.post_icon{
+    cursor: pointer;
+}
+
+.post_icon svg{
+    vertical-align: middle;
+    font-size: 25px;
+}
+
+.video_icon{
+    color: #f02849;
+}
+
+.image_icon{
+    color: #45bd62
+}
+
+.feeling_icon{
+    color: #ffc956;
+}
+
+.post_icon span{
+    font-weight: bold;
+    color: #888;
+    margin: 0 10px;
+}
+/*--------------------------modal post------------------------*/
+
+/*Feed who post*/
+
+.feed_post{
+    margin: 10px;
+}
+
+.feed_post_single{
+    background-color: #fff;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 10px;
+
+}
+
+.feed_who_post{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feed_who_post_img{
+    width: 6%;
+    text-align: center;
+}
+
+.feed_who_post_info{
+    width: 89%;
+}
+
+.feed_who_post_info b{
+    cursor: pointer;
+}
+
+.feed_who_post_info span{
+    color: #999;
+    font-size: 13px;
+    padding: 0 2px;
+}
+
+.feed_who_post_info svg{
+    color: #999;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.feed_who_post_dots{
+    width: 5%;
+    text-align: center;
+}
+
+.dots{
+    cursor: pointer;
+}
+
+.feed_post_content_description{
+    padding-bottom: 8px;
+}
+
+.feed_post_content_description p{
+    font-size: 14px;
+}
+
+.feed_post_content{
+    width: 100%;
+    padding: 10px;
+}
+
+.feed_post_content_archive img{
+    width: 100%;
+    max-height: 450px;
+    cursor: pointer;
+}
+
+.feed_post_likes_comments{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+    transition: 0.4s;
+}
+
+.feed_post_likes svg{
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.feed_post_likes span{
+    vertical-align: middle;
+    color: #999;
+}
+
+.feed_post_comments span{
+    vertical-align: middle;
+    padding: 0 5px;
+    font-size: 14px;
+    color: #999;
+}
+
+.feed_post_user_interaction{
+    margin: 10px 5px 15px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 0px #ccc;
+}
+
+.feed_post_user_interaction svg{
+    vertical-align: middle;
+    font-size: 17px;
+}
+
+.feed_post_user_like,.feed_post_user_comment,.feed_post_user_share{
+    cursor: pointer;
+}
+
+.feed_post_user_interaction span{
+    font-size: 13px;
+    padding: 0 4px;
+    font-weight: bold;
+    color: #999;
+}
+
+/* fim feed_post_user */
+
+/* animations */
+
+.toggle_hide{
+    opacity: 1;
+    transition: 0.4s;
 }

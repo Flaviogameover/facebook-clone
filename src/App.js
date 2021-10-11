@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header.js';
+import Stories from './components/Stories.js';
+import User_Post from './components/User_Post.js';
+import Posts from './components/Posts.js';
+
+import {useState, useEffect} from 'react';
+import {db, auth} from './firebase'; 
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const[user_login,set_user_login] = useState({});
+
+    useEffect(()=>{
+        auth.onAuthStateChanged((val)=>{
+            if(val != null){
+                set_user_login(val);
+            }
+        })
+    },[]);
+
+
+    return (
+        <div className="App">
+            <Header user_login={user_login} set_user_login={set_user_login}/>
+            <Stories/>
+            {
+                (user_login)?
+                <div>
+                    <User_Post user_login={user_login}/>
+                    <Posts user_login={user_login}/>
+                </div>
+                :
+                <div></div>
+            }
+        </div>
+    );
 }
 
 export default App;
